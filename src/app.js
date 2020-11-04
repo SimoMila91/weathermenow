@@ -250,8 +250,8 @@ let showForecast = (data) => {
             tooltips: false,
             layout: {
                 padding: {
-                    top: 30,
-                    right: 12,
+                    top: 20,
+                    right: 14,
                 }
             },
             elements: {
@@ -266,10 +266,10 @@ let showForecast = (data) => {
                     backgroundColor: function (context) {
                         return context.dataset.backgroundColor;
                     },
-                    borderRadius: 4,
+                    borderRadius: 3,
                     color: 'black',
                     font: {
-                        size: 14,
+                        size: 15,
                         weight: 'bold'
                     },
                     formatter: Math.round
