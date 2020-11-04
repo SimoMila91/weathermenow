@@ -368,39 +368,9 @@ $('#geoClick').on('click', function () {
     } else {
         query = "imperial";
     };
-
-    if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(position => {
-            let lat = position.coords.latitude;
-            let lon = position.coords.longitude;
-            let pos = "https://api.openweathermap.org/data/2.5/forecast?lat=" +
-                lat + "&lon=" + lon + "&units=" + query + "&appid=" + api;
-            axios.get(pos)
-                .then(res => res.data)
-                .then(data => {
-                    tmpBtn.empty();
-                    $('#boxForecast').empty();
-                    displayResult(data, 0);
-                    showForecast(data);
-                    localStorage.removeItem('city');
-                    localStorage.setItem('city', data.city.name);
-                })
-                .catch(err => {
-                    console.log(err);
-                });
-        }, (err) => {
-            // if the user doesn't allow geolocation I show the weather of New York. 
-            if (err.code == err.PERMISSION_DENIED) {
-                console.log("You denied me :-(");
-                requestCity("Turin");
-                localStorage.setItem('city', 'Turin');
-            }
-        });
-    };
-
     try {
-        var getIP = 'https://ip-api.com/json/';
-        let openWeatherMap = 'https://api.openweathermap.org/data/2.5/forecast'
+        var getIP = 'http://ip-api.com/json/';
+        let openWeatherMap = 'http://api.openweathermap.org/data/2.5/forecast'
         $.getJSON(getIP).done(function (location) {
             $.getJSON(openWeatherMap, {
                 lat: location.lat,
