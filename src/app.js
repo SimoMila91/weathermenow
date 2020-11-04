@@ -397,6 +397,7 @@ $('#geoClick').on('click', function () {
             }
         });
     };
+};
 
 
 let addData = (chart, label, data) => {
