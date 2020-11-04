@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WEATHER MENOW</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <!-- Google Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <!-- Bootstrap core CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Design Bootstrap -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container-fluid container-pad">
+        <header class="header">
+            <div class="row title">
+                <div class="col-6 pad-border">
+                    <h1 class="h1-style">WEATHER<br>ME <span class="now">NOW</span></h1>
+                </div>
+                <div class="col-6">
+                    <p class="geolocation">to be geolocated {<br> click here <i class="fas fa-long-arrow-alt-right"></i>
+                        <i id="geoClick" class="fas fa-globe icon-style"></i><br>};</p>
+                </div>
+
+            </div>
+
+        </header>
+        <div class="row margin-row">
+            <div id="form" class="col-sm-12 col-lg-6 form-pad-desktop">
+                <form id="searchForm" class="form-inline d-flex md-form form-sm mt-40 style-flex form-style">
+                    <i class="fas fa-search" aria-hidden="true"></i>
+                    <input id="inputForm" class="form-control form-control-sm ml-3 input-width" type="text"
+                        placeholder="What city?" autocomplete="off" aria-label="Search">
+                    <button id="submitForm" type="submit"
+                        class="btn btn-outline-info waves-effect btn-sm btn-style">Search</button>
+                </form>
+
+                <div class="btn-units style-flex">
+                    <p class="text-units">Your weather is currently showing in:</p>
+                    <button id="btnCel" type="button" class="btn-type btn btn-style btn-click">°C</button>
+                    <button id="btnFara" type="button" class="btn-type btn btn-style">°F</button>
+                </div>
+                <div id="alertForm" class="alert alert-danger text-center hide">
+                    Oops! City does not exist!
+                </div>
+            </div>
+            <div id="cardStyle" class="col-sm-12 col-lg-6 col-xs-12 style-mobile-card ">
+                <div class="card shadow-lg back-card">
+                    <div class="card-top text-center">
+                        <div class="city-name my-3">
+                            <p id="city"></p>
+                            <span id="des"></span>
+                        </div>
+                        <div id="divTemp" class="feel-temp">
+                            <p id="dateText" class="margin-change">Monday, 13 October</p>
+                            <p class="temp"><span id="temp"></span><span id="unitType"></span></p>
+                            <p class="margin-change">Feels Like <span id="tempFeels"></span><span
+                                    id="secUnitType"></span>
+                            </p>
+                        </div>
+                        <img id="firstIcon" class="day-img" src="" alt="">
+                        <div id="imgHeight" class="view img-height">
+                            <img id="dayNight" class="card-img-top fit" src="">
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12 condition-temp">
+                                    <div class="row text-center">
+                                        <div class="col-3">
+                                            <p class="stat-title">Humidity</p>
+                                            <i id="humIcon" class="icon-style fas"></i>
+                                            <p><span id="hum"></span>%</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="stat-title">Visibility</p>
+                                            <i class="icon-style fas fa-binoculars"></i>
+                                            <p><span id="vis"></span> km</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="stat-title">Wind Direction</p>
+                                            <i class="icon-style far fa-compass"></i>
+                                            <p><span id="deg"></span></p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="stat-title">Wind Speed</p>
+                                            <i class="icon-style fas fa-wind"></i>
+                                            <p><span id="wind"></span><span id="kmMil"></span></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="scroll-mobile">
+                                <div class="row scroll-item">
+                                    <div class="col-12">
+                                        <canvas id="myChart" class="canvas-heigth"></canvas>
+                                    </div>
+                                    <div id="tmpBtn" class="col-12">
+                                        <div id="" class="tmp-btn">
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="row pd-boxFore">
+                                <div class="col-12">
+                                    <div id="boxForecast" class="forecast-container text-center"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.0/axios.min.js"
+        integrity="sha512-DZqqY3PiOvTP9HkjIWgjO6ouCbq+dxqWoJZ/Q+zPYNHmlnI2dQnbJ5bxAHpAMw+LXRm4D72EIRXzvcHQtE8/VQ=="
+        crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.4/umd/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/js/mdb.min.js"></script>
+    <!-- My js file -->
+    <script type="text/javascript" src="src/app.js"></script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+</body>
+
+</html>
