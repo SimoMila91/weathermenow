@@ -269,6 +269,23 @@ body {
     .day-img {
         width: 80px;
     }
+    
+    .img-height {
+        height: auto;
+    }
+
+    .fit {
+        height: 192px;
+    }
+    
+      .scroll-mobile {
+        position: relative;
+        overflow: scroll;
+    }
+
+    .scroll-item {
+        min-width: 500px;
+    }
 }
 
 
@@ -296,16 +313,6 @@ body {
     }
 }
 
-@media (max-width: 414px) {
-    .img-height {
-        height: auto;
-    }
-
-    .fit {
-        height: 192px;
-    }
-}
-
 @media (max-width: 330px) {
     .day-img {
         top: 87px;
@@ -319,18 +326,6 @@ body {
 
     .h1-style {
         font-size: 3.6rem;
-    }
-}
-
-@media (max-width: 414px) {
-    
-    .scroll-mobile {
-        position: relative;
-        overflow: scroll;
-    }
-
-    .scroll-item {
-        min-width: 500px;
     }
 }
 
