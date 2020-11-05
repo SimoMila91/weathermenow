@@ -300,6 +300,10 @@ body {
     .img-height {
         height: auto;
     }
+
+    .fit {
+        height: 192px;
+    }
 }
 
 @media (max-width: 330px) {
@@ -318,7 +322,7 @@ body {
     }
 }
 
-@media (max-width: 375px) {
+@media (max-width: 414px) {
     
     .scroll-mobile {
         position: relative;
@@ -384,7 +388,7 @@ body {
     }
 
     .header {
-        margin-top: 37px;
+        margin-top: 19px;
     }
 
     .img-height {
