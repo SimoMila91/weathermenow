@@ -260,12 +260,8 @@ body {
 
 }
 
-@media (max-width: 414px) {
-    #nav {
-        flex-flow: column;
-        justify-content: center;
-    }
-
+@media (max-width: 420px) {
+ 
     .day-img {
         width: 80px;
     }
