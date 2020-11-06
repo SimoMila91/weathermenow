@@ -39,6 +39,7 @@ body {
     line-height: 0.8;
     letter-spacing: -4.9px;
     font-weight: bold;
+    margin-left: 8px;
 }
 .title {
     position: absolute;
