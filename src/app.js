@@ -144,28 +144,28 @@ let showForecast = (data) => {
         daysSorted.push(days[newDate.getDay()]);
     }
     daysSorted.unshift(days[now.getDay()]);
-    for (let i = 0; i < data.list.length; i++) {
+    
+     for (let i = 0; i < data.list.length; i++) {
+        let search = data.list[i].dt_txt.slice(8, 10);
         if (nowHour < 23) {
-            let search = data.list[i].dt_txt.slice(8, 10);
             let hour = data.list[i].dt_txt.slice(11, 13);
-            if (search.includes(today)) {
+            if (search.includes(day[0])) {
                 todayMax.push(data.list[i].main.temp_max);
                 if (nowHour == hour || hour == (nowHour + 1) || hour == (nowHour + 2)) {
                     icon.push(data.list[i].weather[0].id);
                 }
-            } else if (search.includes(today + 1)) {
+            } else if (search.includes(day[1])) {
                 secondDay.push(data.list[i].main.temp);
-            } else if (search.includes(today + 2)) {
+            } else if (search.includes(day[2])) {
                 thirdDay.push(data.list[i].main.temp);
-            } else if (search.includes(today + 3)) {
+            } else if (search.includes(day[3])) {
                 fourthDay.push(data.list[i].main.temp);
-            } else if (search.includes(today + 4)) {
+            } else if (search.includes(day[4])) {
                 fifthDay.push(data.list[i].main.temp);
             }
             for (let i = 0; i < data.list.length; i++) {
-                let search = data.list[i].dt_txt.slice(8, 10);
                 let hour = data.list[i].dt_txt.slice(11, 13);
-                if (hour == 12 && !search.includes(today)) {
+                if (hour == 12 && !search.includes(day[0])) {
                     icon.push(data.list[i].weather[0].id);
                 }
             };
@@ -181,12 +181,12 @@ let showForecast = (data) => {
 
     for (let i = 0; i < data.list.length; i++) {
         let search = data.list[i].dt_txt.slice(8, 10);
-        if (search.includes(today)) {
+        if (search.includes(day[0])) {
             dataTemp.push(data.list[i].main.temp);
             label.push(data.list[i].dt_txt.slice(11, 16));
         };
     };
-
+    
     minMax.push([Math.round(Math.max(...todayMax)) + "°", Math.round(Math.min(...todayMax)) + "°"]);
     minMax.push([Math.round(Math.max(...secondDay)) + "°", Math.round(Math.min(...secondDay)) + "°"]);
     minMax.push([Math.round(Math.max(...thirdDay)) + "°", Math.round(Math.min(...thirdDay)) + "°"]);
