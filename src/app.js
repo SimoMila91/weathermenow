@@ -1,4 +1,3 @@
-const api = "0b1209a54d4160c220294614d34d91d4";
 const uri = "https://api.openweathermap.org/data/2.5/forecast?q=";
 let screenWidth = $(window).width();
 let city = $('#city');
@@ -13,6 +12,13 @@ let firstIcon = $('#firstIcon');
 let visibility = $('#vis');
 let tmpBtn = $('#tmpBtn div');
 const textDate = $('#dateText');
+let api;
+
+axios.get("https://weather-menow.herokuapp.com/api")
+    .then((res) => {
+        api = res.data;
+    });
+
 
 
 // geolocation 
