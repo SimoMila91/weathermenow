@@ -12,11 +12,12 @@ let firstIcon = $('#firstIcon');
 let visibility = $('#vis');
 let tmpBtn = $('#tmpBtn div');
 const textDate = $('#dateText');
-let api;
+let api = "";
 
 axios.get("https://weather-menow.herokuapp.com/api")
     .then((res) => {
-        api = res.data;
+        let ok = res.data;
+        api = ok;
     });
 
 
