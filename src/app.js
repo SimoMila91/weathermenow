@@ -380,7 +380,7 @@ $('#geoClick').on('click', function () {
         navigator.geolocation.getCurrentPosition(position => {
             let lat = position.coords.latitude;
             let lon = position.coords.longitude;
-            let pos = "https://api.openweathermap.org/data/2.5/forecast?lat=" +
+            let pos = "http://api.openweathermap.org/data/2.5/forecast?lat=" +
                 lat + "&lon=" + lon + "&units=" + query + "&appid=" + api;
             axios.get(pos)
                 .then(res => res.data)
