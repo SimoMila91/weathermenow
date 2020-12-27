@@ -1,4 +1,4 @@
-const uri = "https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/forecast?q=";
+const uri = "http://api.openweathermap.org/data/2.5/forecast?q=";
 let screenWidth = $(window).width();
 let city = $('#city');
 let temp = $('#temp');
